@@ -6,7 +6,7 @@ from player import Player
 
 server = "192.168.0.237"
 port = 5555
-
+max_connections = 2
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 try:
@@ -14,18 +14,8 @@ try:
 except socket.error as e:
     str(e)
 
-s.listen(2)
+s.listen(max_connections)
 print("Waiting for a connection, Server Started")
-
-
-# def read_pos(string):  # Helper function
-#     string = string.split(",")
-#     return int(string[0]), int(string[1])
-#
-#
-# def make_pos(tup):  # Helper function
-#     return str(tup[0]) + "," + str(tup[1])
-
 
 players = [Player(0, 0, 50, 50, (255, 0, 0)), Player(100, 100, 50, 50, (0, 0, 255))]
 
